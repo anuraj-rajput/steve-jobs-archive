@@ -230,11 +230,8 @@
     display: none !important;
   }
   
-  /* Adjust tree icon size for desktop */
+  /* Keep tree icon visible on all screen sizes */
   .mobile-tree-icon {
-    top: 2rem;
-    left: 2rem;
-    width: 48px;
-    height: 48px;
+    display: flex !important;
   }
 }

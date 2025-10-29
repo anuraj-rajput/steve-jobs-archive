@@ -6,11 +6,16 @@ export default defineConfig({
   plugins: [react()],
   base: '/',
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    assetsInlineLimit: 0, // Don't inline any assets, keep them as separate files
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name][extname]'
+        assetFileNames: (assetInfo) => {
+          // Keep image file names predictable
+          if (/\.(jpg|jpeg|png|webp|svg|gif)$/.test(assetInfo.name)) {
+            return 'assets/[name]-[hash][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        }
       }
     }
   }
